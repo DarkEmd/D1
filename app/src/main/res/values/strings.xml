@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="second_activity">Second activity</string>
+    <string name="go_to_activity2">Go to Activity2</string>
+    <string name="go_to_web">Go to web</string>
+    <string name="message">Hello from MainActivity</string>
+    <string name="hello">Hello hello</string>
+</resources>
