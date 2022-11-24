@@ -9,11 +9,15 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn, btn2;
+    private Button btn;
+    private TextView tw1, tw2, tw3;
+    private SeekBar sk1, sk2, sk3;
     public static final String VALUE = "key";
     private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -32,7 +36,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btn = findViewById(R.id.button);
-        btn2 = findViewById(R.id.button2);
+        tw1 = findViewById(R.id.editTextTextPersonName1);
+        tw2 = findViewById(R.id.editTextTextPersonName4);
+        tw3 = findViewById(R.id.editTextTextPersonName5);
+        sk1 = findViewById(R.id.seekBar2);
+        sk2 = findViewById(R.id.seekBar4);
+        sk3 = findViewById(R.id.seekBar5);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
