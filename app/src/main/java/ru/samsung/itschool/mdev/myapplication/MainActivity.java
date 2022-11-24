@@ -1,18 +1,31 @@
 package ru.samsung.itschool.mdev.myapplication;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button btn, btn2;
     public static final String VALUE = "key";
+    private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if(result.getResultCode() == MainActivity2.CODE) {
+                    String str = result.getData().getStringExtra(MainActivity2.KEY2);
+                    Toast.makeText(getApplicationContext(),
+                            str,
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
                 // намерение - явное
                 Intent intent = new Intent(MainActivity.this,MainActivity2.class);
                 intent.putExtra(VALUE,getString(R.string.hello));
-                startActivity(intent);
+              //  startActivity(intent); // я не жду обратные данные
+                launcher.launch(intent); // жду обратные данные
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
